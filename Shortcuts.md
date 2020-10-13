@@ -1,0 +1,1 @@
+* [Prototypal Inheritance](Advanced_JavaScript_Notes.md##prototypal-inheritance)

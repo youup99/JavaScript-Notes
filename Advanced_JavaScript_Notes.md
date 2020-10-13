@@ -147,7 +147,7 @@
         - The weak versions don't allow for iteration or sizem, bc shit might have gotten gc'd
         - Weak data structures are good for when we want to hold an object, but only while some other code controls its lifecycle; also good for caching where if we don't need it anymore, we let it get garbagecollected
     - Map keys are ordered by insertion, whereas objects are ordered with integer indicies in ascending order, then all other string keys in insertion order
-- Prototypal Inheritance:
+## Prototypal Inheritance:
     - **When we want to read a property from an object, and it’s missing, JavaScript automatically takes it from its prototype. This is prototypal inheritance.**
     - **Prototypes form the prototype chain, a linked list of inheritance**
     - However, we can't have circular references for prototypes - that throws an error.

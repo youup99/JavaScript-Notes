@@ -34,6 +34,10 @@ DOM nodes have properties and methods that allow us to travel between them, modi
 
 # Walking the DOM
 
+- `<html>` = `document.documentElement`
+- `<body>` = `document.body`
+- `<head>` = `document.head`
+
 ## Summary
 
 Give a DOM node, we can go to its immediate neighbors using navigation properties.
@@ -214,4 +218,37 @@ Elements have the following geometry properties:
 - `scrollWidth/scrollHeight` – the width/height of the content, just like `clientWidth/clientHeight`, but also include scrolled-out, invisible part of the element.
 - `scrollLeft/scrollTop` – width/height of the scrolled out upper part of the element, starting from its upper-left corner.
 
-- All properties are read-only except `scrollLeft/scrollTop` that make the browser scroll the element if changed.
+All properties are read-only except `scrollLeft/scrollTop` that make the browser scroll the element if changed.
+
+# Window sizes and scrolling
+
+## Summary
+
+Geometry:
+
+- Width/height of the visible part of the document (content area width/height): `document.documentElement.clientWidth/clientHeight`
+- Width/height of the whole document, with the scrolled out part:
+
+    ```javascript
+    let scrollHeight = Math.max(document.body.scrollHeight, document.documentElement.scrollHeight, document.body.offsetHeigh, document.documentElement.offsetHeight, document.body.clientHeight, document.documentElement.clientHeight);
+    ```
+
+Scrolling:
+
+- Read the current scroll: `window.pageYOffset/pageXOffset`.
+- Change the current scroll:
+    - `window.scrollTo(pageX, pageY)` - absolute coordinates.
+    - `window.scrollBy(x, y)` - scroll relative to the current place.
+    - `elem.scrollIntoView(top)` - scroll to make `elem` visible (align with the top/bottom of the window).
+
+# Coordinates
+
+## Summary
+
+Any point on the page has coordinates:
+1. Relative to the window - `elem.getBoundingClientRect()`.
+2. Relative to the document - `elem.getBoundingClientRec()` plus the current page scroll.
+
+Window coordinates are great to use with `position:fixed` and document coordinates do well with `position: absolute`.
+
+Both coordinate systems have their pros and cons; there are times we need one or the other one, just like CSS `position`, `absolute` and `fixed`.
